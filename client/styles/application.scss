@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Ubuntu');
+@import "variables";
+@import "common";
+
+header.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $color_dark;
+  height: 55px;
+  width: 100%;
+  border-bottom: 2px solid $color_darker;
+  padding: 10px 20px 5px 20px;
+  z-index: 2;
+
+  @media(min-width: $screen-md) {
+    height: 70px;
+    padding: 15px 25px 10px 25px;
+  }
+
+  .brand img {
+    width: 140px;
+
+    @media (min-width: $screen-md) { width: 160px; }
+  }
+}
+
+.lesson-page {
+  height: 100%;
+  overflow-y: hidden;
+  margin-top: -70px;
+  padding-top: 70px;
+
+  .course-header {
+    display: flex;
+    background: $color_dark;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-bottom: 2px solid $color_darker;
+
+    .menu-toggle {
+      padding: 12px 18px;
+      border-right: 2px solid $color_darker;
+      cursor: pointer;
+      z-index: 2;
+
+      @media (min-width: $screen-lg) { display: none; }
+    }
+
+    .title { padding: 12px 15px; }
+  }
+
+  .wrapper {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+
+    @media (min-width: $screen-lg) { display: flex;  }
+  }
+
+  .menu {
+    position: absolute;
+    left: 0;
+    background: $color_dark;
+    padding-bottom: 80px;
+
+    border-right: 2px solid $color_darker;
+    width: 0px;
+    max-width: 350px;
+    height: 100%;
+    transition: width 0.8s;
+    overflow-y: scroll;
+    z-index: 1;
+
+    scrollbar-width: thin;
+    scrollbar-color: $color_darker $color_base;
+
+    @media (min-width: $screen-lg) {
+      display: block;
+      position: static;
+      width: 350px;
+      max-width: 350px;
+    }
+
+    @media (min-width: $screen-xl) {
+      width: 450px;
+      max-width: 450px;
+    }
+
+    &.show { width: 100%; }
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      background-color: $color_darker;
+    }
+    &::-webkit-scrollbar-thumb { background-color: $color_base; }
+
+    .section-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      > .menu-item {
+        font-weight: 600;
+        color: white;
+      }
+
+      .section-progress {
+        width: 60px;
+        height: 7px;
+        background-color: lighten($color_base, 5%);
+        margin-right: 20px;
+        border-radius: 5px;
+
+        .progress-bar {
+          background-color: $color_light;
+          height: 100%;
+          border-radius: 5px;
+        }
+      }
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: $color_font;
+      font-size: 0.9rem;
+      padding: 10px 20px;
+      min-width: 250px;
+      overflow-x: hidden;
+
+      &.active { background-color: $color_darker; }
+
+      a { color: $color_font; }
+      .completed-icon { color: $color_light; }
+    }
+
+    .section > .menu-item { font-weight: 600; }
+
+    .lessons > .menu-item {
+      padding-left: 30px;
+
+      &:hover { background: $color_darker; }
+     }
+  }
+
+  .content-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 100px;
+
+    scrollbar-width: thin;
+    scrollbar-color: $color_darker $color_base;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      background-color: $color_base;
+    }
+    &::-webkit-scrollbar-thumb { background-color: $color_darker; }
+
+    .content {
+      padding: 30px;
+      max-width: 1000px;
+      line-height: 1.6;
+
+      @media(min-width: $screen-lg) {
+        padding: 50px 60px;
+      }
+
+      h3 {
+        font-weight: 600;
+        margin: 40px 0 20px;
+      }
+
+      strong { font-weight: 600; }
+
+      img { max-width: 100%; }
+
+      .video-wrapper {
+        position: relative;
+        padding-bottom: 62%;
+        height: 0;
+        margin: 40px 0;
+
+        iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .answer-wrapper {
+        font-size: 0.95rem;
+        padding-left: 20px;
+        margin-bottom: 20px;
+
+        summary { outline: none; }
+
+        .answer {
+          background: $color_dark;
+          margin-top: 15px;
+          padding: 15px;
+          border-radius: 5px;
+
+          p, ol, ul { margin-top: 0; }
+          ol, ul { padding-left: 20px; }
+        }
+      }
+
+      table {
+        background: $color_dark;
+        font-size: 0.9rem;
+        border: 2px solid $color_darker;
+        border-bottom: none;
+        table-layout: fixed;
+        width: 100%; /* must have this set */
+
+        th, td {
+          padding: 7px 12px;
+          border-bottom: 2px solid $color_darker;
+        }
+
+        td { vertical-align: top; }
+
+        pre {
+          font-size: 0.9rem;
+          margin: 0;
+        }
+      }
+
+      .summary-ordered-list li .answer-wrapper {
+        margin-top: 7px;
+        padding-left: 0;
+      }
+
+      pre {
+        code {
+          background-color: $color_darker;
+          border-radius: 5px;
+          padding: 10px 15px;
+        }
+      }
+
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+
+      @media(min-width: $screen-md) {
+        margin-bottom: 50px;
+        padding-bottom: 20px;
+      }
+    }
+
+    footer {
+      background: $color_dark;
+      text-align: right;
+      width: 100%;
+      padding: 15px 25px;
+      border: 1px solid $color_darker;
+      margin-top: 70px;
+
+      .completed-icon {
+        color: $color_light;
+        margin-right: 20px;
+
+        @media(min-width: $screen-md) { font-size: 1.2rem; }
+      }
+    }
+  }
+}
+
+.loading-page {
+  @extend .page;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(3, 12, 36, 0.8);
+  text-align: center;
+  height: 100%;
+  width: 100%;
+
+  p {
+    font-size: 1.1rem;
+    margin-top: 30px;
+  }
+}
+
+.auth-page {
+  @extend .page;
+
+  form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+}
+
+.admin-users-page {
+  @extend .page;
+
+  width: 992px;
+  margin: 0 auto;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .table-above {
+    text-align: right;
+    margin-bottom: 10px;
+  }
+
+  .section-progress {
+    width: 60px;
+    height: 7px;
+    background-color: lighten($color_base, 5%);
+    margin-right: 20px;
+    border-radius: 5px;
+
+    .progress-bar {
+      background-color: $color_light;
+      height: 100%;
+      border-radius: 5px;
+    }
+  }
+}
+
+.admin-invitations-page {
+  @extend .page;
+
+  width: 992px;
+  margin: 0 auto;
+}
+
+.activate-account-page {
+  @extend .page;
+
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.invite-user-page {
+  @extend .page;
+
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+}

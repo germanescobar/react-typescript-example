@@ -1,0 +1,156 @@
+* { box-sizing: border-box; }
+
+html {
+  --scrollbarBG: #CFD8DC;
+  --thumbBG: #90A4AE;
+}
+
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
+}
+
+body {
+  background: $color_base;
+  color: $color_font;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+
+  @media(min-width: $screen-xl) { font-size: 18px; }
+}
+
+#app { height: 100%; }
+
+a {
+  color: $color_light;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 1.8rem;
+}
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.2rem; }
+h4 { font-size: 1.1rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.9rem; }
+
+@media (min-width: $screen-lg) {
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.4rem; }
+  h4 { font-size: 1.2rem; }
+  h5 { font-size: 1.1rem; }
+  h6 { font-size: 1rem; }
+}
+
+input {
+  background: $color_dark;
+  color: $color_font;
+  font-size: 1rem;
+  border: 1px solid $color_darker;
+  padding: 12px 18px;
+  border-radius: 5px;
+}
+
+code:not(pre) {
+  background: $color_darker;
+  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  padding: 2px 5px;
+}
+
+.btn {
+  border: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 20px;
+  cursor: pointer;
+
+  @media(min-width: $screen-md) {
+    font-size: 1rem;
+    padding: 12px 30px;
+  }
+
+  &.btn-default {
+    background: $btn_default_color;
+    color: $color_dark;
+  }
+
+  &.btn-primary {
+    background: $color_light;
+    color: white;
+  }
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  background: $color_dark;
+
+  td, th { padding: 11px 18px;  }
+  th {
+    text-align: left;
+    background: $color_darker;
+  }
+}
+
+.alert {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-shadow: none;
+  padding: 20px 20px;
+  max-width: 400px;
+  border-radius: 5px;
+
+  &.alert-error {
+    background-color: #db2525;
+    color: white;
+  }
+
+  &.alert-info {
+    background-color: #2580db;
+    color: white;
+  }
+}
+
+.form-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 7px;
+  }
+
+  input[type=text], input[type=email], input[type=password] {
+    width: 100%;
+  }
+
+  &.has-error {
+    input[type=text], input[type=email], input[type=password] {
+      border: 1px solid red;
+    }
+  }
+}
+
+.form-actions {
+  margin-top: 30px;
+  text-align: right;
+}
+
+.page { padding-top: 30px; }
